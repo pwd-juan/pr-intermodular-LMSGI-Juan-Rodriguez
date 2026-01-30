@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cronologia y ruta que tiene pensada seguir la empresa respecto a los servicios que ofrecer.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
 
@@ -14,69 +15,91 @@
 </head>
 <body>
     <header>
-        <img src="img/logo.png" alt="Logo de la empresa Pepe Consultoría.">
+        <a href="index.html" title="Ir a inicio.">
+            <img src="img/logo.png" alt="Logo de la empresa Pepe Consultoría.">
+        </a>
     </header>
     
     <nav>
         <ul>
             <li><a href="index.html" title="Ir al inicio.">Inicio</a></li>
             <li><a href="proyecto-estrella.html" title="Observa nuestro sistema de reservas.">Proyecto</a></li>
-            <li><a href="cronologia.html" title="Observa las fases de un proyecto.">Cronología</a></li>
+            <li><a href="cronologia.html" title="Fechas de salidas de nuestros servicios.">Cronología</a></li>
             <li><a href="contacto.html" title="Contacta con nosotros.">Contacto</a></li>
         </ul>
     </nav>
 
-    <main>
+    <main id="content-cronologia">
         <h1>Disponibilidad de Nuestros Servicios</h1>
 
-        <table id="service-table">
-            <!-- <caption>Cronología</caption> -->
+        <section>
+            <article id="presentation">
+                <h2>Presentación.</h2>
+                <p>Te presentamos nuestro sistema gestor de reservas. Un sistema gestor con una base solida, que puede ser ampliamente personalizado e ajustado a las necesidades y estilo que quiera retransmitir para su empresa.</p>
+            </article>
+            <article id="personalitation">
+                <h2>Personalizamos tu sistema.</h2>
+                <p>Disponemos de un departamento especialista en marketing y diseño, del cual, dependiendo de la magnitud se le asignara parte de este departamento de manera exclusiva para su proyecto. Ellos adaptaran el producto a los colores, estilo y forma de su empresa, aconsejándole en el camino, y siempre respetando su decisión final.</p>
+            </article>
+            <article id="adaptability">
+                <h2>Adaptabilidad</h2>
+                <p>Nuestro producto se sustenta sobre una base inicial, no obstante, al disponer de multiples herramientas de gestión y personalización, aparte de, el equipo ya mencionado, le garantizamos que su producto no se parecerá a ninguno que pueda tener su competencia e utilize nuestro mismo servicio.</p>
+            </article>
+            <article id="sostenibility">
+                <h2>Sostenibilidad</h2>
+                <p>Tenemos a nuestro departamento técnico en constante búsqueda de posibles errores, fallas de seguridad, etc. Por lo que, siempre que mantenga su suscripción a nuestro servicio sera informado de los fallos de seguridad encontrado, así como recibirá actualizaciones automáticas con las adaptaciones necesarias para solventar dicho fallo. Así pues, contará con un contacto para comunicar incidencias en el producto, por el cual, será atendido.</p>
+            </article>
+        </section>
 
-            <thead>
-                <tr>
-                    <th>Fase</th>
-                    <th>Descripción</th>
-                    <th>Fecha de Inicio</th>
-                    <th>Fecha de Fin</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Sistema gestor de reservas.</td>
-                    <td>Un sistema gestor de reservas altamente personalizable y escalable.</td>
-                    <td colspan="3" class="finish-state nowrap">Terminado</td>
-                </tr>
-                <tr>
-                    <td>Equipo de Desarrollo Web</td>
-                    <td>Ampliar nuestro equipo de desarrollo para poder ofrecer creación de páginas e aplicaciones Web de forma integra.</td>
-                    <td class="nowrap"><time datetime="2026-01-01">01-01-2025</time></td>
-                    <td class="empty-cell"></td>
-                    <td class="start-state nowrap">Empezando</td>
-                </tr>
-                <tr>
-                    <td>Diseño UX/UI</td>
-                    <td>Ampliar nuestro equipo de UX/UI.</td>
-                    <td class="nowrap"><time datetime="2024-12-2">2-12-2024</time></td>
-                    <td class="nowrap"><time datetime="2025-2-1">1-2-2025</time></td>
-                    <td class="finish-state nowrap">Terminado</td>
-                </tr>
-                <tr>
-                    <td>Asesoramiento</td>
-                    <td>Crear un departamento de asesoramiento para consultas de diseño, ampliación, etc.</td>
-                    <td class="nowrap"><time datetime="2025-2-1">1-2-2025</time></td>
-                    <td class="empty-cell"></td>
-                    <td class="blocked-state nowrap" title="Este servicio se encuentra bloqueado, y por tanto, sin avance por decisiones internas.">Bloqueado</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="5">
-                        Todas las fechas implicadas son estimaciones. 
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
+        <section>
+            <table id="service-table">
+                <caption>Cronología</caption>
+                <thead>
+                    <tr>
+                        <th>Fase</th>
+                        <th>Descripción</th>
+                        <th>Fecha de Inicio</th>
+                        <th>Fecha de Fin</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sistema gestor de reservas.</td>
+                        <td>Un sistema gestor de reservas altamente personalizable y escalable.</td>
+                        <td colspan="3" class="finish-state nowrap">Terminado</td>
+                    </tr>
+                    <tr>
+                        <td>Equipo de Desarrollo Web</td>
+                        <td>Ampliar nuestro equipo de desarrollo para poder ofrecer creación de páginas e aplicaciones Web de forma integra.</td>
+                        <td class="nowrap"><time datetime="2026-01-01">01-01-2025</time></td>
+                        <td class="empty-cell"></td>
+                        <td class="start-state nowrap">Empezando</td>
+                    </tr>
+                    <tr>
+                        <td>Diseño UX/UI</td>
+                        <td>Ampliar nuestro equipo de UX/UI.</td>
+                        <td class="nowrap"><time datetime="2024-12-2">2-12-2024</time></td>
+                        <td class="nowrap"><time datetime="2025-2-1">1-2-2025</time></td>
+                        <td class="finish-state nowrap">Terminado</td>
+                    </tr>
+                    <tr>
+                        <td>Asesoramiento</td>
+                        <td>Crear un departamento de asesoramiento para consultas de diseño, ampliación, etc.</td>
+                        <td class="nowrap"><time datetime="2025-2-1">1-2-2025</time></td>
+                        <td class="empty-cell"></td>
+                        <td class="blocked-state nowrap" title="Este servicio se encuentra bloqueado, y por tanto, sin avance por decisiones internas.">Bloqueado</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            Todas las fechas implicadas son estimaciones.
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
     </main>
 
     <footer>
@@ -88,7 +111,7 @@
         </section>
         <section>
             <p>© 2025 All rights reserved</p>
-            <a class="link" href="mailto:juarodfer3@alu.edu.gva.es">Juan Rodríguez</a>
+            <a class="link" href="mailto:juarodfer3@alu.edu.gva.es" title="Con ayuda de Daniela.">Juan Rodríguez</a>
         </section>
         <section>
             <ul>
