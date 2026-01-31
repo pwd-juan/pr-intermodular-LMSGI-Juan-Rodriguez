@@ -298,8 +298,8 @@ footer {
     background-repeat: no-repeat;
     background-attachment: fixed; /* Parallax */
 
-    min-height: 90dvh;  /* El resto de espacio disponible después del header y nav es 90dvh */
-                        /* Pienso que al tener que ser algo llamativo es interesante que ocupe toda la pantalla */
+    min-height: 90vh;
+
 
     display: flex;
     flex-direction: column;
@@ -328,6 +328,10 @@ footer {
 
     & h1, & p {
         text-shadow: 0 0 .5rem var(--brighter-shadow);
+    }
+
+    & .button {
+        margin-bottom: 1rem;
     }
 }
 
@@ -1026,4 +1030,5 @@ footer {
         }
     }
 }
+
 
