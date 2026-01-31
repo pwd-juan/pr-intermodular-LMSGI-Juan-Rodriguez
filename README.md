@@ -13,3 +13,6 @@ Lo único que he hecho diferente a la estructura que solicitaba el enunciado en 
 Cuando estuve diseñando las páginas lo realice en pantalla dividida (en un lado de la pantalla la página y en el otro el editor), esto produjo que al pasar a pantalla completa algunos contenidos se vieran vacíos. Una de las soluciones que he encontrado es poner anchos máximos (max-width). En algunos de estos he utilizado pixeles por que no le encontrar sentido utilizar metidas relativas.
 
 Otra dificultad ha sido hacer responsive el aside de la página proyecto estrella. La solución encontrada ha sido usar un display grid.
+
+## Webgrafia
+Búsquedas sueltas en google, y mucho de esta web [Manz.dev](https://lenguajecss.com/css/).

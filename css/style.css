@@ -1,24 +1,26 @@
 :root {
-    /*Mains Colors*/
+    /* Colores Principales */
+    /* Para el texto */
     --font-color: #eee;
     --font-color-complementary: #30d4da;
-    --font-color-button: #fff;
-    --font-color-selected: #159978;
+    --font-color-dark: #000;
+    /* Para el contenido */
     --main-color: #152230;
     --main-color-complementary: #1e4344;
     --main-color-complementary-darker: #152d2e;
-    --main-color-analog: #161530;
-
-    /*Shadows*/
-    --shadow: rgb(0 0 0 / 80%);
+    --alternative-bg-cta: #968f81;
+    /* Selección del usuario */
+    --font-color-selected: #159978;
     --shadow-selected: rgba(0 0 0 / 100%);
+    
+    /* Sombras */
+    --shadow: rgb(0 0 0 / 80%);
     --brighter-shadow: rgb(100% 100% 100% / 70%);
 
     /*Table Colors*/
-    --user-selection: rgb(0 0 0 / 30%);
-
     --table-color: #0d1b1b;
     --table-color-border: #0d1818;
+    --table-external-border: #2b6c6d;
 
     --table-color-A: #2a6c6e;
     --table-color-A-hover: #235c5e;
@@ -27,22 +29,26 @@
 
     --table-finish-state: #4F8F6A;
     --table-finish-state-hover: #58a779;
-    --table-start-state: #2F6F73;
-    --table-start-state-hover: #3f9197;
+    --table-start-state: #26685a;
+    --table-start-state-hover: #2a7565;
     --table-blocked-state: #6B3A3A;
     --table-blocked-state-hover: #944949;
 
-    --table-border: #2b6c6d;
-
-    --contact-bg: rgba(171, 241, 208, 0.05);
-
     /* Formulario */
-    --color-input-correcto: green;
-    --color-input-incorrecto: red;
+    --contact-bg: rgba(171, 241, 208, 0.05);
+    --correct-input-color: #98f598;
+    --incorrect-input-color: #f19b9b;
+    --map-border: #2b6c6d;
+
+    /* Configuración fuente */
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 * {
-    /*Reset*/
+    /* Reset */
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -50,25 +56,29 @@
     list-style: none;
     font-style: normal;
     box-sizing: border-box;
-
-    /*Configuración fuente*/
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
 }
 
-.link {
-    position: relative;
+::selection{
+    color: var(--font-color-selected);
+    text-shadow: 0 0 1rem var(--shadow-selected);
+}
 
+/* Clases generales */
+.link {
     text-shadow: 0 0 1rem var(--shadow);
     color: var(--font-color-complementary);
 
     transition: color .3s, text-shadow .2s;
 
+    /* Para los enlaces con images de las redes sociales */
     & img {
+        width: 1rem;
         transition: filter .3s;
     }
 
+    /* Para el efecto de aparición de la linea */
+    position: relative;
+    
     &:after {
         content: "";
         
@@ -85,35 +95,35 @@
     &:hover {
         text-shadow: 0 0 1.2rem var(--brighter-shadow);
         color: var(--font-color);
-    }
 
-    &:hover > img {
-        filter: brightness(120%);
-    }
+        & > img {
+            filter: brightness(120%);
+        }
 
-    &:hover:after {
-        width: 100%;
+        &:after {
+            width: 100%;
+        }
     }
 }
 
 .button {
     background-color: var(--main-color-complementary);
-    color: var(--font-color-button);
     
-    border-radius: 9999px;
+    border-radius: 9999px;  /* Pongo 9999px para sobrepasar el ancho del contenedor */
+                            /* Esto lo tengo que hacer al no conocer la altura del contenedor */
+                            /* Se que es una solución cutre, pero no se me ocurría otra */
     border: none;
     box-shadow: 0 0 1rem 0 var(--shadow);
     
     font-weight: bold;
     
-    user-select: none;
+    user-select: none;  /* No creo que sea correcto que el usuario puede seleccionar el interior de un botón */
+    cursor: pointer;    /* Según tengo entendido, ayuda al usuario a saber que el algo clickable */
     
     padding: .8rem;
 
     font-size: 1.15rem;
-    white-space: nowrap;
-
-    cursor: pointer;
+    white-space: nowrap; /* Para que no haga un salto de linea */
 
     transition: color .3s, background-color .4s, text-shadow .3s;
 
@@ -124,21 +134,31 @@
     }
 }
 
-::selection{
-    color: var(--font-color-selected);
-    text-shadow: 0 0 1rem var(--shadow-selected);
-}
-
+/* Etiquetas generales */
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Con esta propiedad y valor, el scroll se suaviza */
+                             /* Lo cual es interesante para los enlaces internos usando ids*/
 }
 
 body {
-    min-height: 100dvh;
-
     background-color: var(--main-color);
-
+    
+    min-height: 100dvh; /* Para que en caso de que el contenido no ocupe el total de la pantalla, aun así el contenedor tenga el tamaño para ocupar la */
+                        /* dvh es el alto de la pantalla de forma dinámica */
+                        /* Es decir, que en mobiles cuando se oculta la barra de direcciones se recalcula */
+    /* Este grid es para que el footer este siempre al final de la página */
     display: grid;
+    /*
+        Exp.:
+        Creas una grilla de 1 columna y en este caso 4 filas.
+        Una para el header, otra para el nav, otra para main, y otro footer.
+
+        Y le dices que los tamaños de las celdas sean automáticos para el header, nav y footer
+        esto se traduce al tamaño que considere el navegador oportuno, normalmente el que 
+        ocupa el contenido. Mientras que al la celda que encapsula el contenido centra 
+        ocupa una fracción. Y puesto que una fracción del espacio restante es el espacio disponible,
+        el tamaño de la celda ocupa lo restante del contenedor
+    */
     grid-template-rows: auto auto 1fr auto;
 }
 
@@ -169,17 +189,20 @@ sup {
     font-size: .6rem;
 }
 
+strong {
+    font-weight: bold;
+}
+
 header  {
     background-color: var(--main-color-complementary);
     height: 6dvh;
-    min-height: 30px;
+    min-height: 30px; /* Para el caso de ventanas con poca altura */
 
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     
-    padding-top: .15rem;
     padding-left: .5rem;
 
     & a {
@@ -192,18 +215,20 @@ header  {
 }
 
 nav {
-    min-height: 20px;
+    height: 4dvh;
+    min-height: 30px; /* Para el caso de ventanas con poca altura */
 
     background-color: var(--main-color-complementary);
     
     border-bottom: solid 3px var(--main-color-complementary-darker);
 
+    /* Para mantener el nav siempre visible */
     position: sticky;
     top: 0;
     z-index: 3;
 
     & ul {
-        height: 4dvh;
+        height: 100%;
 
         display: flex;
         flex-direction: row;
@@ -219,7 +244,7 @@ nav {
         justify-content: center;
 
         & a {
-            transition: .3s color;
+            transition: color .3s;
 
             &:hover {
                 color: var(--font-color-complementary);
@@ -240,24 +265,22 @@ footer {
     padding: .4rem 0;
 
     & * {
-        font-size: 1rem;
         margin: .3rem;
     }
 
-    & img {
-        width: 1rem;
-    }
-
+    /* Para separar los enlaces legales */
     & section:first-child li:first-child {
         margin-bottom: 1rem;
     }
 
+    /* Copyright */
     & section:nth-child(2) {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
+    /* Enlaces a redes sociales */
     & section:last-child a {
         display: flex;
         flex-direction: row;
@@ -266,14 +289,17 @@ footer {
     }
 }
 
+/* index.html */
 #hero {
+    /* El linear-gradient esta para oscurecer la imagen */
     background-image: linear-gradient(rgb(0 0 0 / 25%)), url('../img/hero.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: fixed; /* Parallax */
 
-    min-height: 90dvh;
+    min-height: 90dvh;  /* El resto de espacio disponible después del header y nav es 90dvh */
+                        /* Pienso que al tener que ser algo llamativo es interesante que ocupe toda la pantalla */
 
     display: flex;
     flex-direction: column;
@@ -290,27 +316,29 @@ footer {
 
     gap: 2rem;
 
+    /* Fuente aumentada significativamente a la del resto de la página */
     & h1 {
         font-size: 3rem;
     }
 
     & p {
         font-size: 1.2rem;
+        text-align: center;
     }
 
     & h1, & p {
         text-shadow: 0 0 .5rem var(--brighter-shadow);
     }
-
-    & > * {
-        text-align: center;
-    }
 }
 
 #services{
-    max-width: 100dvw;
-    min-height: 100dvh;
+    min-height: 100dvh; /* Para seguir la linea de ocupar la pantalla entera */
     
+    /* Por la ampliación de los elementos del bento */ 
+    /* En algunas pantallas muy anchas podrías sobre salir */
+    max-width: 100dvw;
+    overflow-x: hidden;
+
     padding: 2rem;
 
     display: flex;
@@ -318,27 +346,28 @@ footer {
     align-items: center;
 
     & > h2 {
+        /* Como el titulo de arriba es más grande, descompensa este titulo */
+        /* Por lo que puntualmente es el h2 es más grande */
         font-size: 3rem;
         margin: 2rem 0;
     }
-
-    /*Por la ampliación del bento, en algunas pantallas muy anchas podrías sobre salir.*/
-    overflow-x: hidden;
 }
 
 .bento {
     /* Para ajustar el bento al padre. */
     flex: 1 1 auto;
-    
+
+    /* Por que no hay tanto contenido como para ocupar toda la pantalla */
+    max-width: 1350px;
+
     /* He decidido usar un grid para hacer un bento */
     display: grid;
     grid-template-rows: auto auto auto;
     grid-template-columns: auto auto auto;
     gap: 1rem;
 
-    user-select: none; 
+    user-select: none; /* Me parece chocante que el usuario puede seleccionar en los elementos del bento */
 
-    max-width: 1350px;
     padding-bottom: 3rem;
 
     & .expandir-horizontal {
@@ -393,11 +422,11 @@ footer {
         }
     }
 
-
     /*
     https://lenguajecss.com/css/selectores/combinador-has/
     https://lenguajecss.com/css/selectores/combinador-not/
     */
+    /* Si algún article esta en :hover, a los que no están en ese estado se les aplican los estilos */
     &:has(article:hover) article:not(article:hover) {
         filter: blur(1px);
     }
@@ -415,14 +444,14 @@ footer {
 }
 
 .CTA-card {
-    background-image: linear-gradient(rgb(0 0 0 / 25%)), url('../img/cta2.png');
+    background-image: linear-gradient(rgb(0 0 0 / 25%)), url('../img/cta.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     border-radius: 1rem;
 
     width: 80dvw;
-    max-width: 1000px; /*Para evitar usar una media Querry*/
+    max-width: 1000px; /* Para pantallas muy anchas */
 
     display: flex;
     flex-direction: column;
@@ -431,11 +460,11 @@ footer {
 
     padding: 3rem 2rem;
 
-
     & > * {
-        max-width: 60%;
+        max-width: 60%; /* Para dejarle espacio al hombre del fondo */
     }
 
+    /* Contenedor para ordenar los botones */
     & div {
         display: flex;
         flex-direction: column;
@@ -444,15 +473,17 @@ footer {
     }
 }
 
+/* proyecto-estrella.html */
 #main-content {
+    /* Para el layout de main + aside */
     display: flex;
     flex-direction: row;
 
     & main {
         background-color: var(--main-color);
  
-        flex: 1 1 auto;
-        max-width: 75dvw;
+        flex: 1 1 auto; /* Para que ocupe todo el espacio disponible */
+        max-width: 75dvw; /* Pero no más que el 75% de la pantalla */
 
         display: flex;
         flex-direction: column;
@@ -466,8 +497,13 @@ footer {
             text-align: left;
         }
 
+        & p {
+            text-indent: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
         & section {
-            max-width: 80%;
+            max-width: 80%; /* Para apretar un poco más el contenido */
             margin-bottom: 3rem;
         }
 
@@ -484,6 +520,9 @@ footer {
             & article {
                 background-color: var(--main-color-complementary);
                 
+                /* Para que se ajuste al espacio*/
+                /* Y haga el salto cuando no pueda encogerse por el contenido */
+                /* Apura hasta no poder contener el contenido */
                 flex: 1 1 min-content;
 
                 display: flex;
@@ -512,11 +551,6 @@ footer {
                     }
                 }
 
-                & strong {
-                    display: inline-block;
-                    font-weight: bold;
-                }
-
                 & h3 {
                     margin: 1rem 0 .5rem 0;
                 }
@@ -543,11 +577,16 @@ footer {
     }
 
     & aside {
+        /* Para que se adapte al espacio disponible */
         flex: 1 1 auto;
         
         background-color: var(--main-color-complementary);
         border-left: 3px solid var(--main-color-complementary-darker);
         padding: 1rem 2rem 1rem 1rem;
+
+        & h3 {
+            text-align: center;
+        }
 
         & li {
             margin: 1rem 0;
@@ -564,21 +603,17 @@ footer {
         }
 
         & a {
-            position: relative;
             text-shadow: 0 0 .6rem var(--brighter-shadow);
-
+            
             transition: text-shadow .3s, color .3s;
-
-            &:hover {
-                color: var(--font-color-complementary);
-                text-shadow: 0 0 1rem var(--shadow);
-            }
-
+            
+            /* Variante de los enlaces normales */
+            position: relative;
             &:after {
                 content: "";
 
                 position: absolute;
-                bottom: 0;                
+                bottom: 0;
                 left: 0;
 
                 width: 0;
@@ -588,6 +623,11 @@ footer {
                 transition: width .3s;
             }
 
+            &:hover {
+                color: var(--font-color-complementary);
+                text-shadow: 0 0 1rem var(--shadow);
+            }
+
             &:hover:after {
                 width: 100%;
             }
@@ -595,39 +635,48 @@ footer {
     }
 }
 
+/* cronologia.html */
 #content-cronologia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     & section {
-        margin: 3rem 0 3rem 0;
+        margin: 2rem 0 2rem 0;
     }
 
-    & article {
-        margin-bottom: 2rem;
-        max-width: 80%;
-
-        & h2 {
-            text-align: left;
-            margin-bottom: .5rem;
-        }
-    }
-
+    /* Sección del texto */
     & section:nth-of-type(1) {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         flex-direction: column;
+        
+        max-width: 90%;
+
+        & article {
+            margin-bottom: 2rem;
+
+            & h2 {
+                text-align: left;
+                margin-bottom: .5rem;
+            }
+
+            & p {
+                text-indent: 1.5rem;
+            }
+        }
     }
 }
 
 #service-table {
     width: 95dvw;
-    margin: 0 auto;
-
-    border: 1px solid var(--table-color-border);
-    border-collapse: collapse;
 
     cursor: cell;
-
-    border: 2px solid var(--table-border);
-    box-shadow: 0 0 10px var(--table-border);
+    
+    background-color: var(--table-color);
+    border: 2px solid var(--table-external-border);
+    box-shadow: 0 0 10px var(--table-external-border);
+    border-collapse: collapse;
 
     & .nowrap {
         white-space: nowrap;
@@ -637,7 +686,7 @@ footer {
         background-color: var(--table-color);
 
         &:hover {
-            /* Preguntar si esta permitido utilizar el !important */
+            /* Necesito utilizar important porque el :hover genérico tiene más especificidad. */
             background-color: var(--table-color) !important;
         }
     }
@@ -688,11 +737,8 @@ footer {
         text-align: center;
         font-size: .7rem;
     }
-    
-    & thead tr, & tfoot tr {
-        background-color: var(--table-color);
-    }
 
+    /* Filas impares dentro del cuerpo de la tabla */
     & tbody tr:nth-child(odd) {
         background-color: var(--table-color-A);
 
@@ -701,6 +747,7 @@ footer {
         }
     }
 
+    /* Filas pares dentro del cuerpo de la tabla */
     & tbody tr:nth-child(even){
         background-color: var(--table-color-B);
 
@@ -710,6 +757,7 @@ footer {
     }
 }
 
+/* contacto.html */
 #contact {
     display: flex;
     flex-direction: row;
@@ -727,18 +775,34 @@ footer {
         & iframe {
             width: 100%;
             height: 100%;
+
+            border-radius: .75rem;
+            border: 2px solid var(--map-border);
+            box-shadow: 0 0 4px var(--map-border);
+
+            transition: box-shadow .3s;
+
+            &:hover {
+                box-shadow: 0 0 10px var(--map-border);
+            }
         }
     }
 
     & section {
-        flex: 1 1 auto;
-        width: 50%;
+        flex: 1 1 50%;
         padding: 2rem;
 
-        border-radius: 10px;
+        border-radius: .75rem;
 
+        /* El section que contiene el form */
         &:first-child {
             background-color: var(--contact-bg);
+
+            /* 
+            Como por el textarea puedes aumentar el tamaño, el section del tiene 
+            que tener un margin para que no se pegue al footer al aumentarlo demasiado.
+            */
+            margin-bottom: 1rem;
         }
     }
 
@@ -753,58 +817,91 @@ footer {
 
         & textarea {
             height: 4rem;
+            /* Porque de ampliarse horizontal daría problemas con el mapa y las dimensiones de la página */
             resize: vertical;
         }
 
-        & input, & textarea{
+        & select {
+            cursor: pointer;
+            text-overflow: ellipsis;
+        }
+
+        & option {
+            color: var(--font-color-dark);
+            background-color: var(--correct-input-color);
+
+            &:first-child {
+                text-align: center;
+                background-color: #ffeeee;
+            }
+        }
+
+        /* Sección de políticas de privacidad */
+        & div {
+            line-height: 2px;
+            margin-bottom: 2rem;
+        }
+
+        /* Estilos generales de los inputs del usuario */
+        & input, & textarea, & select{
             margin-bottom: 1rem;
-            color: #000;
+            color: var(--font-color-dark);
             border: 2px solid var(--main-color-complementary-darker);
             border-radius: 6px;
 
-            transition: outline .2s;
+            /* Al ser tan fino el outline la animación tiene que ser lenta para que se note */
+            transition: outline .8s;
             
             &:focus, &:hover {
+                /* 
+                outline es como border, pero su principal diferencia es que no forma parte 
+                del layout de la caja, lo que se traduce en un resultado visual que no empuja
+                al resto de contenido.
+                */
                 outline: 1px solid var(--brighter-shadow);
             }
 
             &:valid {
-                background-color: var(--color-input-correcto);
+                background-color: var(--correct-input-color);
             }
 
             &:invalid {
-                background-color: var(--color-input-incorrecto);
+                background-color: var(--incorrect-input-color);
             }
-        }
-
-        /*Porque es el mismo color que el fondo*/
-        & .button:hover {
-            background-color: var(--main-color-complementary-darker);
-        }
-
-        & a {
-            color: var(--font-color);
         }
     }
 }
 
+/* Medias Quarry */
+/* Para pantallas pequeñas */
 @media (width <= 750px) {
+    :root {
+        /* 
+        Al tener los margenes y paddings con rem al cambiar el tamaño de la fuente 
+        se ajusta todo.
+        */
+        font-size: 12px;
+    }
     
+    /* Sinceramente centro el logo porque me dijeron que quedaba mejor */
     header {
         display: flex;
         justify-content: center;
 
         padding: .3rem 0;
     }
-
-    :root {
-        font-size: 12px;
-    }
     
+    /* index.html */
     .bento {
+        /* Pasa de 3 a 1 columna */
         grid-template-columns: auto;
+        /* 
+        Tiene tantas filas como las que sean necesarias con el tamaño necesario 
+        albergar el contenido. 
+        */
         grid-template-rows: repeat(auto-fit, auto);
 
+        /* Resetean las expansiones de los article que conformas el bento */
         & .expandir-horizontal {
             grid-column-start: span 1;
             flex-direction: row;
@@ -822,29 +919,33 @@ footer {
     }
 }
 
-@media (width <= 500px) {   
+/* Para pantallas móviles */
+@media (width <= 500px) {
     :root {
         font-size: 13px;
     }
 
+    /* El footer pasa ha ser tan pequeño que no puede contener el contenido */
     footer {
         flex-direction: column;
         gap: 1rem;
     }
-    
-    #contact{
-        flex-direction: column;
-        & section {
-            width: 100%;
-        }
-    }
 
+    /* index.html */
     .bento {
+        /* 
+        Quieto los efectos del hover porque entiendo 
+        que puede llegar a ser molesto en móviles 
+        */
         & article {
             &:hover {
                 filter: brightness(1);
                 transform: scale(1);
-                box-shadow: 0 0 2rem 1rem var(--shadow);
+                box-shadow: 0 0 1rem var(--shadow);
+
+                & h3, p {
+                    text-shadow: none;
+                }
             }
         }
 
@@ -854,20 +955,26 @@ footer {
     }
 
     .CTA-card {
-        background-image: none;
-        background-color: #968f81;
+        /* Por que al tener tan poco ancho se ve muy mal la imagen */
+        background-image: url("../img/cta2.jpg");
+        background-position: left;
+
+        & h2 {
+            text-align: left;
+        }
     }
     
+    /* proyecto-estrella.html */
     #main-content {
+        /* Para poner en columna el aside con el main */
+        /* Es reverse porque por el orden en el html se podría al final no al principio */
         flex-direction: column-reverse;
-        
 
-        & main {max-width: 100dvw;}
-        
-        & #pricing article strong:hover {
-            text-shadow: 0 0 1rem var(--brighter-shadow) !important;
-            transform: scale(1) !important;
+        & main {
+            /* Como no hay aside el main tiene que ocupar todo lo posible */
+            max-width: 100dvw;
         }
+        
 
         & aside {
             border-left: none;
@@ -876,9 +983,19 @@ footer {
             padding: 1rem;
 
             & ul {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                display: grid;
+                grid-template-columns: auto auto;
+                justify-items: center;
+            }
+
+            & li {
+                margin: .75rem 0;
+            }
+
+            /* El li que contiene precios */
+            /* Para que quede bien al ser impares. */
+            & li:last-child {
+                grid-column-start: span 2;
             }
         }
 
@@ -891,17 +1008,21 @@ footer {
         }
     }
 
+    /* cronologia.html */
     #service-table {
-        border: 0;
-        margin-bottom: 2rem;
-
+        /* Cambio la forma de la tabla */
         & thead, & .empty-cell {display: none;}
-
-        & tr {border: 1px solid var(--table-color-border);}
-
         & td {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+        }
+    }
+
+    /* contacto.html */
+    #contact{
+        flex-direction: column;
+        & section {
+            width: 100%;
         }
     }
 }

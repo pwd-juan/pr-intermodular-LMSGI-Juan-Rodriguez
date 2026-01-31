@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Página de con el formulario de contacto y ubicación de la empresa.">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,28 +33,37 @@
         <h1>Contacta con nosotros</h1>
         <div id="contact">
             <section>
-                <form action="https://morning-paper-a0fc.contry-1990.workers.dev" method="post" enctype="multipart/form-data">
+                <form action="https://morning-paper-a0fc.contry-1990.workers.dev" method="post">
                     <label for="name">Nombre de su empresa</label>
-                    <input type="text" name="name" id="name" required>
+                    <input type="text" name="nombre" id="name" required>
 
                     <label for="explanation">Mensaje</label>
-                    <textarea name="explanation" id="explanation" placeholder="Me gustaría hablaros de ... &#10En mi empresa trabajamos en ... &#10Me parece interesante vuestro ..."></textarea>
+                    <textarea name="motivo" id="explanation" placeholder="Me gustaría hablaros de ... &#10En mi empresa trabajamos en ... &#10Me parece interesante vuestro ..." required minlength="10"></textarea>
 
                     <label for="date">Selecciona un día y una hora</label>
-                    <input type="datetime-local" name="date" id="date" min="now" required>
+                    <input type="datetime-local" name="fecha" id="date" min="now" required>
 
                     <label for="mail">Correo de contacto</label>
-                    <input type="email" name="mail" id="mail" required>
+                    <input type="email" name="email" id="mail" required>
 
+                    <label for="motive">Asunto de la consulta.</label>
+                    <select name="motive" id="motive" required>
+                        <option value="">- Selecciona uno -</option>
+                        <option value="Desarrollo">Desarrollo Web</option>
+                        <option value="Sistema Gestor">Sistema Gestor de Reservas</option>
+                        <option value="Ciberseguridad">Ciberseguridad</option>
+                        <option value="Diseño">Diseño</option>
+                        <option value="Asesoramiento">Asesoramiento</option>
+                    </select>
                     <div>
-                        <input type="checkbox" name="Policies" id="policies" required>
+                        <input type="checkbox" name="privacidad" id="policies" required>
                         <label for="policies">Aceptar las <a class="link" href="404.html">Políticas de Privacidad</a></label>
                     </div>
                     <button type="submit" class="button">Enviar</button>
                 </form>
             </section>
             <section class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25148.0982247527!2d-0.881105568989354!3d38.01183517668448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd63a054db98d91f%3A0xc80fc64991618829!2sEmbalse%20de%20la%20Pedrera!5e0!3m2!1ses!2ses!4v1767108219667!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d784.793238721215!2d-0.9096916008026125!3d38.11291049999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd63987743fb59cf%3A0x26a1e96927ed6c25!2sAsesor%C3%ADa%20Fco.%20Mart%C3%ADnez!5e0!3m2!1ses!2ses!4v1769851220510!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </section>
         </div>
     </main>
@@ -68,7 +77,7 @@
         </section>
         <section>
             <p>© 2025 All rights reserved</p>
-            <a class="link" href="mailto:juarodfer3@alu.edu.gva.es" title="Con ayuda de Daniela.">Juan Rodríguez</a>
+            <a class="link" href="mailto:juarodfer3@alu.edu.gva.es">Juan Rodríguez</a>
         </section>
         <section>
             <ul>
