@@ -307,7 +307,7 @@ footer {
 }
 
 .hero-content{
-    flex-basis: 45dvh;
+    flex-basis: 45vh;
 
     display: flex;
     flex-direction: column;
@@ -1030,6 +1030,7 @@ footer {
         }
     }
 }
+
 
 
 
