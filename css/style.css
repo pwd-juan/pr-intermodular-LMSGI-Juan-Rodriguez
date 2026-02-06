@@ -1023,3 +1023,33 @@ footer {
         }
     }
 }
+
+/* Para imprimir */
+@media print {
+    * {
+        background-color: #fff ! important;
+        color: #000;
+        text-shadow: none !important;
+        box-shadow: none !important;
+        user-select: none;
+    }
+
+    header, nav, footer, aside, .button, #CTA {
+        display: none;
+    }
+
+    #main-content main{
+        width: 100vw !important;
+        max-width: 100dvw;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    } 
+
+    &::before {
+        content: "Página creada por: juarodfer3@alu.edu.gva.es";
+        display: flex;
+        justify-content: center;
+    }
+}
