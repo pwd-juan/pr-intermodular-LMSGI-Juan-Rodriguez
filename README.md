@@ -58,12 +58,12 @@ Este proyecto también sirve para apuntes de Markdown. El cual es un lenguaje de
 
 * Los enlaces tiene una estructura más complicada, combina `[]` y `()`.
 ``` [Markdown]
-    [Texto del enlace aquí](URL "Título del enlace")
+    [Texto del enlace aquí]("Dirección del enlace")
 ```
 
 * Para las imágenes es la misma estructura que los enlaces añadiendo un `!` al inicio.
 ``` [Markdown]
-    ![Texto alternativo](URL "Título de la imagen")
+    ![Texto alternativo]("Dirección de la imagen")
 ```
 
 * Para las tablas es usando `|`. Con `:` puedes elegir la justificación del texto, `:---` derecha, `---:` izquierda y `:---:` centro. 
@@ -74,7 +74,7 @@ Este proyecto también sirve para apuntes de Markdown. El cual es un lenguaje de
     | Paragraph   | Text        |
 ```
 
-* Más elementos de markdown en [markdownguide.org](URL "https://www.markdownguide.org/cheat-sheet/")
+* Más elementos de markdown en [markdownguide.org](https://www.markdownguide.org/cheat-sheet/).
 
 ## Conclusiones
 | Me ha gustado | No me ha gustado | Ha mejorar |
@@ -84,3 +84,4 @@ Este proyecto también sirve para apuntes de Markdown. El cual es un lenguaje de
 ## Webgrafia
 
 Búsquedas sueltas en google, y mucho de esta web [Manz.dev](https://lenguajecss.com/css/).
+
