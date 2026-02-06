@@ -79,7 +79,8 @@ Este proyecto también sirve para apuntes de Markdown. El cual es un lenguaje de
 ## Conclusiones
 | Me ha gustado | No me ha gustado | Ha mejorar |
 | :--- | :---: | ---: |
-| La flexibilidad en el tiempo de entrega. :) | La rigidez y en ocasiones, ambigüedad del enunciado. | O hacer el enunciado más libre, o proponer directamente una sería de diseños a seguir |
+| La flexibilidad en el tiempo de entrega. :) | La rigidez y en ocasiones, ambigüedad del enunciado. | O hacer el enunciado más libre, o proponer directamente una serie de diseños a seguir |
 
 ## Webgrafia
+
 Búsquedas sueltas en google, y mucho de esta web [Manz.dev](https://lenguajecss.com/css/).
